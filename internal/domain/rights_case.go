@@ -20,8 +20,12 @@ const (
 )
 
 func (s ItemStatus) IsTerminal() bool {
+	return terminalStatus(s)
+}
+
+func terminalStatus(s ItemStatus) bool {
 	switch s {
-	case StatusCompleted, StatusCancelled, StatusEscalated:
+	case StatusCompleted, StatusCancelled:
 		return true
 	default:
 		return false
