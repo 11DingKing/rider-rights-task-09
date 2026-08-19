@@ -20,7 +20,12 @@ const (
 )
 
 func (s ItemStatus) IsTerminal() bool {
-	return s == StatusCompleted || s == StatusCancelled
+	switch s {
+	case StatusCompleted, StatusCancelled, StatusEscalated:
+		return true
+	default:
+		return false
+	}
 }
 
 type RightsCase struct {
